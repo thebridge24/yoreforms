@@ -55,10 +55,10 @@ if (Array.isArray(uploadedFiles) && uploadedFiles.length > 0) {
 }
 
     const mailOptions = {
-      from: `"No reply" <${process.env.GMAIL_USER}>`,
+      from: `"BridgeForms" <${process.env.GMAIL_USER}>`,
       to: 'johnayomide920@gmail.com',
       bcc: 'alexanderchrist203@gmail.com',
-      subject: `New Contact - ${fullName}`,
+      subject: `BridgeForms - New Contact from ${fullName}`,
       text: `
 Contact Form Submission
 
@@ -81,41 +81,74 @@ Message:
 ${message}
       `,
       html: `
-<div>
-  <h2>New Contact Form Submission</h2>
-  <p>From Contact Website</p>
+<div style="
+  background:#ffffff;
+  color:#000000;
+  padding:24px;
+  font-family:Arial, sans-serif;
+  border-radius:12px;
+  max-width:640px;
+  margin:auto;
+  border:1px solid #e5e5e5;
+">
   
-  <div>
-    <h3>Contact Information</h3>
+  <h2 style="margin:0 0 8px 0; font-size:24px;">New Contact Form Submission</h2>
+  <p style="margin:0 0 20px 0; color:#444;">From Contact Website</p>
+
+  <!-- CONTACT INFORMATION -->
+  <div style="margin-bottom:24px;">
+    <h3 style="font-size:18px; margin-bottom:8px; border-left:4px solid red; padding-left:8px;">
+      Contact Information
+    </h3>
     <p><strong>Full Name:</strong> ${fullName}</p>
     <p><strong>Email:</strong> ${email}</p>
     <p><strong>Phone:</strong> ${phone}</p>
     <p><strong>Contact Method:</strong> ${contactMethod}</p>
   </div>
-  
-  <div>
-    <h3>Business Details</h3>
+
+  <!-- BUSINESS DETAILS -->
+  <div style="margin-bottom:24px;">
+    <h3 style="font-size:18px; margin-bottom:8px; border-left:4px solid red; padding-left:8px;">
+      Business Details
+    </h3>
     <p><strong>Company Name:</strong> ${companyName || 'Not provided'}</p>
     <p><strong>Number of Employees:</strong> ${numEmployees || 'Not provided'}</p>
     <p><strong>Service Interested In:</strong> ${service}</p>
     <p><strong>Interests:</strong> ${interestsText || 'None'}</p>
   </div>
-  
-  <div>
-    <h3>Uploaded Files (${Array.isArray(uploadedFiles) ? uploadedFiles.length : 0})</h3>
+
+  <!-- FILES -->
+  <div style="margin-bottom:24px;">
+    <h3 style="font-size:18px; margin-bottom:8px; border-left:4px solid red; padding-left:8px;">
+      Uploaded Files (${Array.isArray(uploadedFiles) ? uploadedFiles.length : 0})
+    </h3>
     ${filesHtml}
   </div>
 
-  
-  
-  <div>
-    <h3>Message</h3>
-    <div>
-      <p>${message}</p>
+  <!-- MESSAGE -->
+  <div style="margin-bottom:32px;">
+    <h3 style="font-size:18px; margin-bottom:8px; border-left:4px solid red; padding-left:8px;">
+      Message
+    </h3>
+    <div style="
+      background:#fafafa;
+      padding:16px;
+      border-radius:8px;
+      border:1px solid #eee;
+    ">
+      <p style="margin:0; line-height:1.5;">${message}</p>
     </div>
   </div>
+
+  <!-- FOOTER -->
+  <div style="text-align:center; margin-top:32px; font-size:14px; color:#333;">
+    Powered by 
+    <span style="color:red; font-weight:bold;">BridgeForms</span>
+  </div>
+
 </div>
-      `
+`
+
     };
 
     await transporter.sendMail(mailOptions);
