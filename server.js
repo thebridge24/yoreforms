@@ -21,8 +21,8 @@ const corsOptions = {
     if (allowedOrigins.indexOf(origin) !== -1) {
       callback(null, true);
     } else {
-      console.log('❌ CORS blocked for origin:', origin);
-      console.log('✅ Allowed origins:', allowedOrigins);
+      console.log('CORS blocked for origin:', origin);
+      console.log('Allowed origins:', allowedOrigins);
       callback(new Error('Not allowed by CORS'));
     }
   },
@@ -124,8 +124,8 @@ app.use((req, res) => {
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, async () => {
-  console.log(`🚀 Server is running on port ${PORT}`);
-  console.log(`🌐 CORS enabled for:`, allowedOrigins);
-  console.log(`🔧 Environment: ${process.env.NODE_ENV || 'development'}`);
-  console.log(`☁️  Cloudinary configured for cloud: ${process.env.CLOUDINARY_CLOUD_NAME || 'Not configured'}`);
+  console.log(`Server is running on port ${PORT}`);
+  console.log(`CORS enabled for:`, allowedOrigins);
+  console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
+  console.log(`Cloudinary configured for cloud: ${process.env.CLOUDINARY_CLOUD_NAME || 'Not configured'}`);
 });
