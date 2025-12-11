@@ -9,7 +9,7 @@ app.set("trust proxy", 1);
 
 const allowedOrigins = process.env.NODE_ENV === 'production' 
   ? [
-      '',
+      'http://localhost:5173',
       process.env.FRONTEND_URL 
     ].filter(Boolean)
   : ['http://localhost:3001', 'http://10.88.34.131:3000'];
