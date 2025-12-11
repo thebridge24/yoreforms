@@ -56,8 +56,8 @@ if (Array.isArray(uploadedFiles) && uploadedFiles.length > 0) {
 
     const mailOptions = {
       from: `"BridgeForms" <${process.env.GMAIL_USER}>`,
-      to: 'johnayomide920@gmail.com',
-      bcc: 'alexanderchrist203@gmail.com',
+      to: 'thebridgetech.ng@gmail.com',
+      bcc: 'thebridgetech.ng@gmail.com',
       subject: `BridgeForms - New Contact from ${fullName}`,
       text: `
 Contact Form Submission
