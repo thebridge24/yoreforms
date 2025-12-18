@@ -55,10 +55,10 @@ if (Array.isArray(uploadedFiles) && uploadedFiles.length > 0) {
 }
 
     const mailOptions = {
-      from: `"BridgeForms" <${process.env.GMAIL_USER}>`,
-      to: 'thebridgetech.ng@gmail.com',
-      bcc: 'thebridgetech.ng@gmail.com',
-      subject: `BridgeForms - New Contact from ${fullName}`,
+      from: `"Yore Forms" <${process.env.GMAIL_USER}>`,
+      to: 'yorefroms@gmail.com',
+      bcc: 'yorefroms@gmail.com',
+      subject: `New Contact from ${fullName}`,
       text: `
 Contact Form Submission
 
@@ -82,22 +82,28 @@ ${message}
       `,
       html: `
 <div style="
-  background:#ffffff;
-  color:#000000;
-  padding:24px;
+  background:#142014;
+  color:#ffffff;
+  padding:32px;
   font-family:Arial, sans-serif;
   border-radius:12px;
   max-width:640px;
   margin:auto;
-  border:1px solid #e5e5e5;
+  border:1px solid #1a1a1a;
 ">
-  
-  <h2 style="margin:0 0 8px 0; font-size:24px;">New Contact Form Submission</h2>
-  <p style="margin:0 0 20px 0; color:#444;">From Contact Website</p>
+
+  <!-- HEADER -->
+  <div style="display:flex; align-items:center; gap:12px; margin-bottom:24px;">
+    <img src='../logo/yoreforms logo green.png' alt='Yore Forms Logo' style="height:48px; width:auto; border-radius:6px;">
+    <span style="font-size:24px; font-weight:bold; color:#26FF0A;">Yore Forms</span>
+  </div>
+
+  <h2 style="margin:0 0 8px 0; font-size:24px; color:#26FF0A;">New Contact Form Submission</h2>
+  <p style="margin:0 0 24px 0; color:#CCCCCC;">From Contact Website</p>
 
   <!-- CONTACT INFORMATION -->
   <div style="margin-bottom:24px;">
-    <h3 style="font-size:18px; margin-bottom:8px; border-left:4px solid red; padding-left:8px;">
+    <h3 style="font-size:18px; margin-bottom:8px; border-left:4px solid #26FF0A; padding-left:8px;">
       Contact Information
     </h3>
     <p><strong>Full Name:</strong> ${fullName}</p>
@@ -108,7 +114,7 @@ ${message}
 
   <!-- BUSINESS DETAILS -->
   <div style="margin-bottom:24px;">
-    <h3 style="font-size:18px; margin-bottom:8px; border-left:4px solid red; padding-left:8px;">
+    <h3 style="font-size:18px; margin-bottom:8px; border-left:4px solid #26FF0A; padding-left:8px;">
       Business Details
     </h3>
     <p><strong>Company Name:</strong> ${companyName || 'Not provided'}</p>
@@ -119,7 +125,7 @@ ${message}
 
   <!-- FILES -->
   <div style="margin-bottom:24px;">
-    <h3 style="font-size:18px; margin-bottom:8px; border-left:4px solid red; padding-left:8px;">
+    <h3 style="font-size:18px; margin-bottom:8px; border-left:4px solid #26FF0A; padding-left:8px;">
       Uploaded Files (${Array.isArray(uploadedFiles) ? uploadedFiles.length : 0})
     </h3>
     ${filesHtml}
@@ -127,26 +133,27 @@ ${message}
 
   <!-- MESSAGE -->
   <div style="margin-bottom:32px;">
-    <h3 style="font-size:18px; margin-bottom:8px; border-left:4px solid red; padding-left:8px;">
+    <h3 style="font-size:18px; margin-bottom:8px; border-left:4px solid #26FF0A; padding-left:8px;">
       Message
     </h3>
     <div style="
-      background:#fafafa;
+      background:#1a1a1a;
       padding:16px;
       border-radius:8px;
-      border:1px solid #eee;
+      border:1px solid #333333;
     ">
       <p style="margin:0; line-height:1.5;">${message}</p>
     </div>
   </div>
 
   <!-- FOOTER -->
-  <div style="text-align:center; margin-top:32px; font-size:14px; color:#333;">
+  <div style="text-align:center; margin-top:32px; font-size:14px; color:#AAAAAA;">
     Powered by 
-    <span style="color:red; font-weight:bold;">BridgeForms</span>
+    <span style="color:#26FF0A; font-weight:bold;">Yore Forms</span>
   </div>
 
 </div>
+
 `
 
     };

@@ -68,7 +68,7 @@ app.get("/api/cors-test", (req, res) => {
 
 app.get("/", (req, res) => {
   res.json({ 
-    message: "BridgeForms API is running!",
+    message: "yoreforms API is running!",
     timestamp: new Date().toISOString(),
     cors: "Enabled for: " + allowedOrigins.join(', ')
   });

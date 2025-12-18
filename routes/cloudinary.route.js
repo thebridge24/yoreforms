@@ -74,21 +74,21 @@ const getResourceType = (mimeType) => {
 // Helper function to determine folder based on file type
 const getFolder = (mimeType) => {
   if (mimeType.startsWith('image/')) {
-    return 'bridgeforms/bankston/contact_form/images';
+    return 'yoreforms/bankston/contact_form/images';
   } else if (mimeType === 'application/pdf') {
-    return 'bridgeforms/bankston/contact_form/documents/pdf';
+    return 'yoreforms/bankston/contact_form/documents/pdf';
   } else if (mimeType.includes('word')) {
-    return 'bridgeforms/bankston/contact_form/documents/word';
+    return 'yoreforms/bankston/contact_form/documents/word';
   } else if (mimeType.includes('excel') || mimeType === 'text/csv') {
-    return 'bridgeforms/bankston/contact_form/documents/excel';
+    return 'yoreforms/bankston/contact_form/documents/excel';
   } else if (mimeType.includes('powerpoint')) {
-    return 'bridgeforms/bankston/contact_form/documents/powerpoint';
+    return 'yoreforms/bankston/contact_form/documents/powerpoint';
   } else if (mimeType.includes('oasis')) {
-    return 'bridgeforms/bankston/contact_form/documents/opendocument';
+    return 'yoreforms/bankston/contact_form/documents/opendocument';
   } else if (mimeType === 'application/zip' || mimeType === 'application/x-rar-compressed') {
-    return 'bridgeforms/bankston/contact_form/archives';
+    return 'yoreforms/bankston/contact_form/archives';
   } else {
-    return 'bridgeforms/bankston/contact_form/other';
+    return 'yoreforms/bankston/contact_form/other';
   }
 };
 
