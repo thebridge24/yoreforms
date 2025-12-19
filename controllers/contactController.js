@@ -50,7 +50,7 @@ if (Array.isArray(uploadedFiles) && uploadedFiles.length > 0) {
   ).join('\n');
   
   filesHtml = uploadedFiles.map((url, index) => 
-    `<p><strong>File ${index + 1}:</strong> <a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a> (Click to download)</p>`
+    `<p><strong>File ${index + 1}:</strong> <a href="${url}" target="_blank" rel="noopener noreferrer">uploaded File (${index + 1})</a> (Click to download)</p>`
   ).join('');
 }
 
