@@ -56,7 +56,7 @@ if (Array.isArray(uploadedFiles) && uploadedFiles.length > 0) {
 
     const mailOptions = {
       from: `"Yore Forms" <${process.env.GMAIL_USER}>`,
-      to: 'yoreforms@gmail.com',
+      to: process.env.GMAIL_USER,
       bcc: 'alexanderchrist203@gmail.com',
       subject: `New Contact from ${fullName}`,
       text: `
