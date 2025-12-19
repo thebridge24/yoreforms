@@ -8,6 +8,9 @@ cloudinary.config({
   api_key: process.env.CLOUDINARY_API_KEY,
   api_secret: process.env.CLOUDINARY_API_SECRET
 });
+const bufferToDataURI = (file) => {
+  return `data:${file.mimetype};base64,${file.buffer.toString('base64')}`;
+};
 
 const storage = multer.memoryStorage();
 
@@ -119,23 +122,29 @@ router.post('/upload', upload.single('file'), async (req, res) => {
       })
     };
 
-    const uploadPromise = new Promise((resolve, reject) => {
-      const uploadStream = cloudinary.uploader.upload_stream(
-        uploadOptions,
-        (error, result) => {
-          if (error) {
-            console.error('Cloudinary upload error:', error);
-            reject(error);
-          } else {
-            resolve(result);
-          }
-        }
-      );
+ let result;
 
-      uploadStream.end(req.file.buffer);
-    });
+if (resourceType === 'raw') {
+  // PDFs, docs, zip → NO STREAM
+  result = await cloudinary.uploader.upload(
+    bufferToDataURI(req.file),
+    uploadOptions
+  );
+} else {
+  // Images → stream upload
+  result = await new Promise((resolve, reject) => {
+    const uploadStream = cloudinary.uploader.upload_stream(
+      uploadOptions,
+      (error, result) => {
+        if (error) reject(error);
+        else resolve(result);
+      }
+    );
 
-    const result = await uploadPromise;
+    uploadStream.end(req.file.buffer);
+  });
+}
+
 
     res.json({
       success: true,
@@ -183,26 +192,42 @@ router.post('/upload-multiple', upload.array('files', 10), async (req, res) => {
           })
         };
 
-        const uploadStream = cloudinary.uploader.upload_stream(
-          uploadOptions,
-          (error, result) => {
-            if (error) {
-              reject(error);
-            } else {
-              resolve({
-                url: result.secure_url,
-                public_id: result.public_id,
-                format: result.format || file.mimetype.split('/').pop(),
-                resource_type: result.resource_type,
-                size: result.bytes,
-                originalname: file.originalname,
-                mimetype: file.mimetype
-              });
-            }
-          }
-        );
+        if (resourceType === 'raw') {
+  cloudinary.uploader
+    .upload(bufferToDataURI(file), uploadOptions)
+    .then((result) =>
+      resolve({
+        url: result.secure_url,
+        public_id: result.public_id,
+        format: result.format || file.mimetype.split('/').pop(),
+        resource_type: result.resource_type,
+        size: result.bytes,
+        originalname: file.originalname,
+        mimetype: file.mimetype
+      })
+    )
+    .catch(reject);
+} else {
+  const uploadStream = cloudinary.uploader.upload_stream(
+    uploadOptions,
+    (error, result) => {
+      if (error) reject(error);
+      else
+        resolve({
+          url: result.secure_url,
+          public_id: result.public_id,
+          format: result.format,
+          resource_type: result.resource_type,
+          size: result.bytes,
+          originalname: file.originalname,
+          mimetype: file.mimetype
+        });
+    }
+  );
 
-        uploadStream.end(file.buffer);
+  uploadStream.end(file.buffer);
+}
+
       });
     });
 
