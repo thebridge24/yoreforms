@@ -6,15 +6,14 @@ const morgan = require("morgan");
 const app = express();
 
 app.set("trust proxy", 1);
-const FRONTEND_URL = process.env.FRONTEND_URL || 'https://bankstonalliance.com';
 
-
-const allowedOrigins = [
-  process.env.FRONTEND_URL,         // production frontend
-  process.env.NODE_ENV !== 'production' ? 'http://localhost:5173' : null,
-  process.env.NODE_ENV !== 'production' ? 'http://10.64.221.80:5173' : null
-].filter(Boolean);
-
+const allowedOrigins = process.env.NODE_ENV === 'production' 
+  ? [
+      'http://localhost:5173',
+      'http://10.64.221.80:5173',
+      process.env.FRONTEND_URL 
+    ].filter(Boolean)
+  : ['http://localhost:5173', 'http://10.64.221.80:5173'];
 
 const corsOptions = {
   origin: function (origin, callback) {
