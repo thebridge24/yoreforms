@@ -13,7 +13,7 @@ const allowedOrigins = process.env.NODE_ENV === 'production'
       'http://10.64.221.80:5173',
       process.env.FRONTEND_URL 
     ].filter(Boolean)
-  : ['http://localhost:5173', 'http://10.64.221.80:5173'];
+  : ['http://localhost:5173', 'http://10.64.221.80:5173', 'https://bankstonalliance.com'];
 
 const corsOptions = {
   origin: function (origin, callback) {
