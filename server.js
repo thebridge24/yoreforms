@@ -9,11 +9,12 @@ app.set("trust proxy", 1);
 
 const allowedOrigins = process.env.NODE_ENV === 'production' 
   ? [ 'https://bankstonalliance.com',
+     'https://www.bankstonalliance.com',
       'http://localhost:5173',
       'http://10.64.221.80:5173',
       process.env.FRONTEND_URL 
     ].filter(Boolean)
-  : ['http://localhost:5173', 'http://10.64.221.80:5173', 'https://bankstonalliance.com'];
+  : ['http://localhost:5173', 'http://10.64.221.80:5173', 'https://bankstonalliance.com','https://www.bankstonalliance.com'];
 
 const corsOptions = {
   origin: function (origin, callback) {
