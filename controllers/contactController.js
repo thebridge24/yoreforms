@@ -54,7 +54,7 @@ const submitContactForm = async (req, res) => {
 ">
 
   <div style="display:flex; align-items:center; gap:12px; margin-bottom:24px;">
-    <img src='../logo/yoreforms logo green.png' alt='Yore Forms Logo' style="height:48px; width:auto; border-radius:6px;">
+    <img src='https://res.cloudinary.com/dd5ppwbyi/image/upload/v1766137821/yoreforms_logo_green_uyrwgf.png' alt='Yore Forms Logo' style="height:48px; width:auto; border-radius:6px;">
     <span style="font-size:24px; font-weight:bold; color:#26FF0A;">Yore Forms</span>
   </div>
 
