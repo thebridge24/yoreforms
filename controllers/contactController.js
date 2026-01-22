@@ -132,8 +132,8 @@ Message:
 ${message}
     `;
 
-    const fromEmail = process.env.RESEND_FROM_EMAIL
-    const toEmail = process.env.RESEND_TO_EMAIL
+    const fromEmail = 'forms@yoreflow.online';
+    const toEmail = 'info@bankstonalliance.com';
     const bccEmail = 'yoreforms@gmail.com';
 
     const { data, error } = await resend.emails.send({
