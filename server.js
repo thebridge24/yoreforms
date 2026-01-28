@@ -2,19 +2,30 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
+const { getAuthUrl, getTokens } = require("./services/oauth");
 
 const app = express();
 
 app.set("trust proxy", 1);
 
 const allowedOrigins = process.env.NODE_ENV === 'production' 
-  ? [ 'https://bankstonalliance.com',
-     'https://www.bankstonalliance.com',
+  ? [ 
+      'https://bankstonalliance.com',
+      'https://www.bankstonalliance.com',
       'http://localhost:5173',
       'http://10.64.221.80:5173',
+      'http://127.0.0.1:5500',
+      'http://localhost:5500',
       process.env.FRONTEND_URL 
     ].filter(Boolean)
-  : ['http://localhost:5173', 'http://10.64.221.80:5173', 'https://bankstonalliance.com','https://www.bankstonalliance.com'];
+  : [
+      'http://localhost:5173', 
+      'http://10.64.221.80:5173', 
+      'https://bankstonalliance.com',
+      'https://www.bankstonalliance.com',
+      'http://127.0.0.1:5500', 
+      'http://localhost:5500',
+    ];
 
 const corsOptions = {
   origin: function (origin, callback) {
@@ -23,8 +34,6 @@ const corsOptions = {
     if (allowedOrigins.indexOf(origin) !== -1) {
       callback(null, true);
     } else {
-      console.log('CORS blocked for origin:', origin);
-      console.log('Allowed origins:', allowedOrigins);
       callback(new Error('Not allowed by CORS'));
     }
   },
@@ -52,13 +61,35 @@ app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ extended: true, limit: '50mb', parameterLimit: 100000 }));
 app.use(morgan("dev"));
 
-
 const contactRoutes = require("./routes/contact");
 const cloudinaryRoutes = require("./routes/cloudinary.route");
+const meetRoutes = require("./routes/meet");
 
-
+app.use("/api/meet", meetRoutes);
 app.use("/api/contact", contactRoutes);
 app.use("/api/cloudinary", cloudinaryRoutes);
+
+app.get("/oauth", (req, res) => {
+  const authUrl = getAuthUrl();
+  res.redirect(authUrl);
+});
+
+app.get("/oauth2callback", async (req, res) => {
+  const { code } = req.query;
+  try {
+    const tokens = await getTokens(code);
+    res.json({
+      success: true,
+      tokens: tokens,
+      refresh_token: tokens.refresh_token
+    });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      error: error.message
+    });
+  }
+});
 
 app.get("/api/cors-test", (req, res) => {
   res.json({ 
@@ -93,7 +124,6 @@ app.use((err, req, res, next) => {
     });
   }
   
-  // Handle multer errors
   if (err.name === 'MulterError') {
     if (err.code === 'LIMIT_FILE_SIZE') {
       return res.status(400).json({
@@ -130,4 +160,5 @@ app.listen(PORT, async () => {
   console.log(`CORS enabled for:`, allowedOrigins);
   console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
   console.log(`Cloudinary configured for cloud: ${process.env.CLOUDINARY_CLOUD_NAME || 'Not configured'}`);
+  console.log(`Google OAuth URL: http://localhost:${PORT}/oauth`);
 });
