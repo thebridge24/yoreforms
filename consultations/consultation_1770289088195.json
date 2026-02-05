@@ -1,0 +1,11 @@
+{
+  "timestamp": "2026-02-05T10:58:08.195Z",
+  "formData": {
+    "client_name": "John Doe",
+    "client_email": "johnayomdie@gmail.com",
+    "business_name": "John's Business LLC",
+    "client_message": "I need help with tax planning and business registration.",
+    "consultation_date": "2024-12-15T14:00:00.000Z"
+  },
+  "error": "invalid_grant"
+}

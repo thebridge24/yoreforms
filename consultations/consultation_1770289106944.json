@@ -1,0 +1,11 @@
+{
+  "timestamp": "2026-02-05T10:58:26.944Z",
+  "formData": {
+    "client_name": "John Doe",
+    "client_email": "johnayomdie@gmail.com",
+    "business_name": "John's Business LLC",
+    "client_message": "I need help with tax planning and business registration.",
+    "consultation_date": "2024-12-15T14:00:00.000Z"
+  },
+  "error": "Failed to send confirmation email: The yoreflow.online domain is not verified. Please, add and verify your domain on https://resend.com/domains"
+}
