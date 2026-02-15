@@ -8,6 +8,20 @@ const app = express();
 
 app.set("trust proxy", 1);
 
+// MAINTENANCE MODE SWITCH
+const SERVICE_SUSPENDED = true;
+
+if (SERVICE_SUSPENDED) {
+  app.use((req, res) => {
+    return res.status(503).json({
+      success: false,
+      message: "Service temporarily suspended",
+      company: "Bankston Alliance",
+      timestamp: new Date().toISOString()
+    });
+  });
+}
+
 const allowedOrigins = process.env.NODE_ENV === 'production' 
   ? [ 
       'https://bankstonalliance.com',
