@@ -9,7 +9,7 @@ const app = express();
 app.set("trust proxy", 1);
 
 // MAINTENANCE MODE SWITCH
-const SERVICE_SUSPENDED = true;
+const SERVICE_SUSPENDED = false;
 
 if (SERVICE_SUSPENDED) {
   app.use((req, res) => {
