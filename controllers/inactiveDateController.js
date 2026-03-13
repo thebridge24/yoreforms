@@ -1,4 +1,4 @@
-const InactiveDate = require('../models/InactiveDate');
+const InactiveDate = require('../models/inactiveDate');
 
 const createOrUpdateInactiveDate = async (req, res) => {
   try {
