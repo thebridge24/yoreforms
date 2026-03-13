@@ -8,7 +8,7 @@ const { getAuthUrl, getTokens } = require("./services/oauth");
 const app = express();
 
 mongoose.connect(process.env.MONGODB_URI)
-  .then(() => console.log('✅ MongoDB connected'))
+  .then(() => console.log('✅ MongoDB con nected'))
   .catch(err => console.error('❌ MongoDB connection error:', err));
 
 app.set("trust proxy", 1);
