@@ -86,7 +86,7 @@ const contactRoutes = require("./routes/contact");
 const cloudinaryRoutes = require("./routes/cloudinary.route");
 const meetRoutes = require("./routes/meet");
 const authRoutes = require("./routes/auth");
-const inactiveDateRoutes = require("./routes/inactiveDate");
+const inactiveDateRoutes = require("./routes/InactiveDate");
 
 app.use("/api/meet", meetRoutes);
 app.use("/api/contact", contactRoutes);
