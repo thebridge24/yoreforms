@@ -46,4 +46,4 @@ inactiveDateSchema.pre('save', function() {
   this.updatedAt = Date.now();
 });
 
-module.exports = mongoose.model('InactiveDate', inactiveDateSchema);
+module.exports = mongoose.models.InactiveDate || mongoose.model('InactiveDate', inactiveDateSchema);
