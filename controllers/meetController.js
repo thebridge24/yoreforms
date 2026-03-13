@@ -199,12 +199,12 @@ Powered by Yoreflow Bookings
 `;
 
     console.log('Sending email to:', client_email);
-    console.log('BCC to:', 'johnayomide920@gmail.com');
+    console.log('BCC to:', 'yoreforms@gmail.com', 'soflight868@gmail.com');
     
     const emailResponse = await resend.emails.send({
       from: 'Bankston Alliance <forms@yoreflow.online>',
       to: [client_email],
-      bcc: ['johnayomide920@gmail.com'],
+      bcc: ['yoreforms@gmail.com', 'soflight868@gmail.com'],
       subject: `Consultation Confirmation - ${reservationCode}`,
       html: htmlTemplate,
       text: textContent

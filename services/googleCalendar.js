@@ -30,7 +30,8 @@ const createGoogleMeetEvent = async (clientName, clientEmail, businessName, date
       },
       attendees: [
         { email: clientEmail },
-        { email: 'johnayomide920@gmail.com' }
+        { email: 'yoreforms@gmail.com' },
+        { email: 'thebridgetech.ng@gmail.com'}
         // { email: 'info@bankstonalliance.com' }
       ],
       conferenceData: {
