@@ -2,9 +2,14 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
+const mongoose = require('mongoose');
 const { getAuthUrl, getTokens } = require("./services/oauth");
 
 const app = express();
+
+mongoose.connect(process.env.MONGODB_URI)
+  .then(() => console.log('✅ MongoDB connected'))
+  .catch(err => console.error('❌ MongoDB connection error:', err));
 
 app.set("trust proxy", 1);
 
@@ -30,6 +35,7 @@ const allowedOrigins = process.env.NODE_ENV === 'production'
       'http://10.64.221.80:5173',
       'http://127.0.0.1:5500',
       'http://localhost:5500',
+      'https://bankston-website-bqdv.vercel.app',
       process.env.FRONTEND_URL 
     ].filter(Boolean)
   : [
@@ -37,6 +43,7 @@ const allowedOrigins = process.env.NODE_ENV === 'production'
       'http://10.64.221.80:5173', 
       'https://bankstonalliance.com',
       'https://www.bankstonalliance.com',
+       'https://bankston-website-bqdv.vercel.app',
       'http://127.0.0.1:5500', 
       'http://localhost:5500',
     ];
@@ -78,10 +85,14 @@ app.use(morgan("dev"));
 const contactRoutes = require("./routes/contact");
 const cloudinaryRoutes = require("./routes/cloudinary.route");
 const meetRoutes = require("./routes/meet");
+const authRoutes = require("./routes/auth");
+const inactiveDateRoutes = require("./routes/inactiveDate");
 
 app.use("/api/meet", meetRoutes);
 app.use("/api/contact", contactRoutes);
 app.use("/api/cloudinary", cloudinaryRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api/inactive", inactiveDateRoutes);
 
 app.get("/oauth", (req, res) => {
   const authUrl = getAuthUrl();
