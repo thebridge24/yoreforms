@@ -1,49 +1,19 @@
-const mongoose = require('mongoose');
+const jwt = require('jsonwebtoken');
 
-const timeSlotSchema = new mongoose.Schema({
-  start: {
-    type: String,
-    required: true
-  },
-  end: {
-    type: String,
-    required: true
+const authMiddleware = (req, res, next) => {
+  const token = req.header('Authorization')?.replace('Bearer ', '');
+
+  if (!token) {
+    return res.status(401).json({ success: false, error: 'No token provided' });
   }
-});
 
-const inactiveDateSchema = new mongoose.Schema({
-  date: {
-    type: Date,
-    required: true
-  },
-  isFullDay: {
-    type: Boolean,
-    default: false
-  },
-  timeSlots: [timeSlotSchema],
-  reason: {
-    type: String,
-    default: ''
-  },
-  createdBy: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Admin',
-    required: true
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now
-  },
-  updatedAt: {
-    type: Date,
-    default: Date.now
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'your-secret-key');
+    req.adminId = decoded.id;
+    next();
+  } catch (error) {
+    res.status(401).json({ success: false, error: 'Invalid token' });
   }
-});
+};
 
-inactiveDateSchema.index({ date: 1 }, { unique: true });
-
-inactiveDateSchema.pre('save', function() {
-  this.updatedAt = Date.now();
-});
-
-module.exports = mongoose.model('InactiveDate', inactiveDateSchema);
+module.exports = authMiddleware;
