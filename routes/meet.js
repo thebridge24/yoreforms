@@ -1,7 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const { submitConsultationForm } = require("../controllers/meetController");
+const { 
+  submitConsultationForm,
+  submitConsultationAfterPayment 
+} = require("../controllers/meetController");
 
 router.post("/schedule", submitConsultationForm);
+router.post("/schedule-after-payment", submitConsultationAfterPayment);
 
 module.exports = router;

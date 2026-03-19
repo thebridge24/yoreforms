@@ -1,0 +1,14 @@
+{
+  "timestamp": "2026-03-18T01:46:20.558Z",
+  "formData": {
+    "client_name": "THE P-DEV",
+    "client_email": "johnayomide8500@gmail.com",
+    "business_name": "Individual",
+    "client_message": "hello world ",
+    "consultation_date": "2026-03-24T09:00:00.000Z",
+    "reservation_code": "RSV-GOBUU4B9",
+    "payment_completed": true,
+    "test_mode": true
+  },
+  "error": "Resend API Error: You can only send testing emails to your own email address (johnayomide8500@gmail.com). To send emails to other recipients, please verify a domain at resend.com/domains, and change the `from` address to an email using this domain."
+}

@@ -1,0 +1,11 @@
+{
+  "timestamp": "2026-03-18T00:46:04.627Z",
+  "formData": {
+    "client_name": "Itaque itaque eius r",
+    "client_email": "johnayomide920@gmail.com",
+    "business_name": "Consectetur ea nequ",
+    "client_message": "Quo at ratione maxim",
+    "consultation_date": "2026-03-20T08:00:00.000Z"
+  },
+  "error": "Resend API Error: You can only send testing emails to your own email address (johnayomide8500@gmail.com). To send emails to other recipients, please verify a domain at resend.com/domains, and change the `from` address to an email using this domain."
+}
