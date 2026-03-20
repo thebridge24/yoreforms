@@ -68,7 +68,7 @@ const submitContactForm = async (req, res) => {
     
     <div style="background: #26FF0A; height: 6px; width: 100%;"></div>
 
-    <div style="padding: 48px;">
+    <div style="padding: 38px;">
       <div style="text-align: center; margin-bottom: 32px;">
         <img src='https://res.cloudinary.com/dd5ppwbyi/image/upload/v1766137821/yoreforms_logo_green_uyrwgf.png' alt='Yoreflow' style="height: 35px; width: auto; margin-bottom: 12px;">
         <div style="font-size: 11px; font-weight: 800; color: #26FF0A; letter-spacing: 0.1em; text-transform: uppercase;">New Submission</div>
