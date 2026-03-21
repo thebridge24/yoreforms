@@ -281,7 +281,7 @@ Automated System Notification
     const emailResponse = await resend.emails.send({
       from: "Bankston Alliance <forms@yoreflow.online>",
       to: [client_email],
-      bcc: [""],
+      bcc: ["info@bankstonalliance.com", "forms@yoreflow.online"],
       subject: `Consultation Confirmation - ${reservationCode}`,
       html: htmlTemplate,
       text: textContent,
@@ -567,7 +567,7 @@ Automated System Notification
     const emailResponse = await resend.emails.send({
       from: "Bankston Alliance <forms@yoreflow.online>",
       to: [client_email],
-      bcc: [""],
+      bcc: ["info@bankstonalliance.com", "forms@yoreflow.online"],
       subject: `Payment Confirmed - Consultation ${finalReservationCode}`,
       html: htmlTemplate,
       text: textContent,
