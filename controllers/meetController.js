@@ -123,9 +123,9 @@ const submitConsultationForm = async (req, res) => {
                         style="
                           width: 64px;
                           height: 64px;
-                          background-color: #f0fdf4;
+                          background-color: #d8ffe4;
                           border-radius: 50%;
-                          border: 6px solid #e9fff1;
+                          border: 6px solid #d8ffe4;
                         "
                       >
                         <span style="color: #16a34a; font-weight: 800">
@@ -411,7 +411,7 @@ const submitConsultationAfterPayment = async (req, res) => {
                           height: 64px;
                           background-color: #f0fdf4;
                           border-radius: 50%;
-                          border: 6px solid #e9fff1;
+                          border: 6px solid #d8ffe4;
                         "
                       >
                         <span style="color: #16a34a; font-weight: 800">
@@ -568,7 +568,7 @@ Automated System Notification
       from: "Bankston Alliance <forms@yoreflow.online>",
       to: [client_email],
       bcc: ["info@bankstonalliance.com", "forms@yoreflow.online"],
-      subject: `Payment Confirmed - Consultation ${finalReservationCode}`,
+      subject: `Booking Confirmed - Consultation ${finalReservationCode}`,
       html: htmlTemplate,
       text: textContent,
     });
