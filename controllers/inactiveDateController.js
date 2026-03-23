@@ -50,9 +50,19 @@ const createOrUpdateInactiveDate = async (req, res) => {
 
 const getAllInactiveDates = async (req, res) => {
   try {
-    const { startDate, endDate } = req.query;
+    const { startDate, endDate, date } = req.query;
     
     let query = {};
+    
+    if (date) {
+      const dateString = date.includes('T') ? date.split('T')[0] : date;
+      const targetDate = new Date(`${dateString}T00:00:00.000Z`);
+      const inactiveDate = await InactiveDate.findOne({ date: targetDate });
+      return res.json({
+        success: true,
+        data: inactiveDate
+      });
+    }
     
     if (startDate && endDate) {
       query.date = {
@@ -125,6 +135,43 @@ const deleteInactiveDate = async (req, res) => {
   }
 };
 
+const updateInactiveDate = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { date, isFullDay, timeSlots, reason } = req.body;
+
+    const inactiveDate = await InactiveDate.findById(id);
+
+    if (!inactiveDate) {
+      return res.status(404).json({ 
+        success: false, 
+        error: 'Inactive date not found' 
+      });
+    }
+
+    if (date) {
+      const dateString = date.includes('T') ? date.split('T')[0] : date;
+      inactiveDate.date = new Date(`${dateString}T00:00:00.000Z`);
+    }
+    
+    if (isFullDay !== undefined) inactiveDate.isFullDay = isFullDay;
+    if (timeSlots !== undefined) inactiveDate.timeSlots = timeSlots;
+    if (reason !== undefined) inactiveDate.reason = reason;
+    
+    inactiveDate.updatedAt = Date.now();
+    await inactiveDate.save();
+
+    res.json({
+      success: true,
+      message: 'Inactive date updated successfully',
+      data: inactiveDate
+    });
+  } catch (error) {
+    console.error('Update inactive date error:', error);
+    res.status(500).json({ success: false, error: 'Server error' });
+  }
+};
+
 const checkDateAvailability = async (req, res) => {
   try {
     const { date, time } = req.query;
@@ -187,5 +234,6 @@ module.exports = {
   getAllInactiveDates,
   getInactiveDateByDate,
   deleteInactiveDate,
+  updateInactiveDate,
   checkDateAvailability
 };
