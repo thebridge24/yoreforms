@@ -15,7 +15,7 @@ const createPaymentIntent = async (req, res) => {
       });
     }
     
-    const amount = 12500;
+    const amount = 125;
     const currency = 'usd';
     
     console.log('📝 Creating Stripe payment intent...');
