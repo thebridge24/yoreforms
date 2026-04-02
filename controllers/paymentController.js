@@ -130,8 +130,19 @@ const confirmPayment = async (req, res) => {
         res.json({
           success: true,
           status: 'succeeded',
-          bookingData: null,
-          message: 'Payment succeeded but booking data not found'
+          bookingData: {
+            date: paymentIntent.metadata.date,
+            time: paymentIntent.metadata.time,
+            userInfo: {
+              name: paymentIntent.metadata.name,
+              email: paymentIntent.metadata.email,
+              business_name: paymentIntent.metadata.business_name,
+              message: paymentIntent.metadata.message
+            },
+            reservationNumber: paymentIntent.metadata.reservationNumber,
+            paymentIntentId: paymentIntentId
+          },
+          message: 'Payment succeeded, booking data from metadata'
         });
       }
     } else if (paymentIntent.status === 'requires_payment_method') {
