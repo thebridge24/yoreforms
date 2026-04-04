@@ -548,7 +548,7 @@ Outlook: ${calendarLinks.outlook}
 Yahoo: ${calendarLinks.yahoo}
 
 -------------------------------------------------
-
+I
 RESERVATION DETAILS:
 Client Name:     ${client_name}
 Email Address:   ${client_email}
@@ -567,7 +567,7 @@ Automated System Notification
     const emailResponse = await resend.emails.send({
       from: "Bankston Alliance <forms@yoreflow.online>",
       to: [client_email],
-      bcc: ["info@bankstonalliance.com", "forms@yoreflow.online"],
+      bcc: ["info@bankstonalliance.com", "yoreforms@gmail.com"],
       subject: `Booking Confirmed - Consultation ${finalReservationCode}`,
       html: htmlTemplate,
       text: textContent,
