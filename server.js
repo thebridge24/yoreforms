@@ -88,6 +88,7 @@ const meetRoutes = require("./routes/meet");
 const authRoutes = require("./routes/auth");
 const inactiveDateRoutes = require("./routes/inactiveDate");
 const paymentRoutes = require("./routes/payment");
+const defaultContactRoutes = require("./routes/defaultContact");
 
 app.use("/api/payment", paymentRoutes);
 app.use("/api/meet", meetRoutes);
@@ -95,6 +96,7 @@ app.use("/api/contact", contactRoutes);
 app.use("/api/cloudinary", cloudinaryRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/inactive", inactiveDateRoutes);
+app.use("/api/default-contact", defaultContactRoutes); 
 
 app.get("/oauth", (req, res) => {
   const authUrl = getAuthUrl();
