@@ -31,6 +31,8 @@ const allowedOrigins = process.env.NODE_ENV === 'production'
   ? [ 
       'https://bankstonalliance.com',
       'https://www.bankstonalliance.com',
+      'https://stackgate.online',
+      'https://www.stackgate.online',
       'http://localhost:5173',
       'http://10.64.221.80:5173',
       'http://127.0.0.1:5500',
@@ -43,7 +45,9 @@ const allowedOrigins = process.env.NODE_ENV === 'production'
       'http://10.64.221.80:5173', 
       'https://bankstonalliance.com',
       'https://www.bankstonalliance.com',
-       'https://bankston-website-bqdv.vercel.app',
+      'https://stackgate.online',
+      'https://www.stackgate.online',
+      'https://bankston-website-bqdv.vercel.app',
       'http://127.0.0.1:5500', 
       'http://localhost:5500',
     ];
