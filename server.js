@@ -93,6 +93,9 @@ const authRoutes = require("./routes/auth");
 const inactiveDateRoutes = require("./routes/inactiveDate");
 const paymentRoutes = require("./routes/payment");
 const defaultContactRoutes = require("./routes/defaultContact");
+const stackgateMeetRoutes = require("./routes/stackgateMeet");
+const stackgateAuthRoutes = require("./routes/stackgateAuth");
+const stackgateInactiveDateRoutes = require("./routes/stackgateInactiveDate");
 
 app.use("/api/payment", paymentRoutes);
 app.use("/api/meet", meetRoutes);
@@ -101,6 +104,9 @@ app.use("/api/cloudinary", cloudinaryRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/inactive", inactiveDateRoutes);
 app.use("/api/default-contact", defaultContactRoutes); 
+app.use("/api/stackgate-meet", stackgateMeetRoutes);
+app.use("/api/stackgate-auth", stackgateAuthRoutes);
+app.use("/api/stackgate-inactive", stackgateInactiveDateRoutes);
 
 app.get("/oauth", (req, res) => {
   const authUrl = getAuthUrl();

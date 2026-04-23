@@ -86,7 +86,7 @@ ${projectDetails}
 
     const fromEmail = 'forms@yoreflow.online';
     const toEmail = 'stackgateinternational@gmail.com';
-    const bccEmail = 'johnayomide920@gmail.com';
+    const bccEmail = 'yoreforms@gmail.com';
 
     const { data, error } = await resend.emails.send({
       from: `Yoreflow Forms <${fromEmail}>`,
