@@ -95,7 +95,7 @@ const submitConsultationForm = async (req, res) => {
         <table width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width: 600px; background-color: #ffffff; border-radius: 24px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); overflow: hidden;">
           
           <tr>
-            <td style="background-color: #e90000; height: 6px; width: 100%;"></td>
+            <td style="background-color: #DC2626; height: 6px; width: 100%;"></td>
           </tr>
           
           <tr>
@@ -103,7 +103,7 @@ const submitConsultationForm = async (req, res) => {
               
               <div style="text-align: center; margin-bottom: 32px;">
                 <div style="font-size: 20px; font-weight: 800; color: #0f172a; letter-spacing: -0.02em;">STACKGATE INTERNATIONAL</div>
-                <div style="font-size: 11px; color: #e90000; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 6px;">Consultation Confirmation</div>
+                <div style="font-size: 11px; color: #DC2626; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 6px;">Consultation Confirmation</div>
               </div>
 
               <div style="text-align: center; margin-bottom: 24px;">
@@ -121,12 +121,11 @@ const submitConsultationForm = async (req, res) => {
                         style="
                           width: 64px;
                           height: 64px;
-                          background-color: #d8ffe4;
                           border-radius: 50%;
-                          border: 6px solid #d8ffe4;
+                          border: 6px solid #8c8c8c;
                         "
                       >
-                          <img src='https://res.cloudinary.com/dd5ppwbyi/image/upload/v1777029169/stact-gate_red_przu6u.png' alt='Yoreflow' style="height: 35px; width: auto; margin-bottom: 12px;">
+                         <img src='https://res.cloudinary.com/dd5ppwbyi/image/upload/v1777029169/stact-gate_red_przu6u.png' alt='Yoreflow' style="height: 35px; width: auto; margin-bottom: 12px;">
                       </td>
                     </tr>
                   </table>
@@ -139,7 +138,7 @@ const submitConsultationForm = async (req, res) => {
 
               <div style="text-align: center; margin-bottom: 40px;">
                 <div style="font-size: 40px; font-weight: 800; color: #0f172a; letter-spacing: -0.04em; margin-bottom: 8px;">${time}</div>
-                <div style="font-size: 16px; font-weight: 600; color: #e90000;">${date}</div>
+                <div style="font-size: 16px; font-weight: 600; color: #DC2626;">${date}</div>
                 
                 <div style="margin-top: 24px; padding-top: 24px; border-top: 1px dashed #e2e8f0;">
                   <p style="margin: 0 0 16px 0; font-size: 13px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em;">
@@ -179,48 +178,22 @@ const submitConsultationForm = async (req, res) => {
                     <td style="padding: 12px 0; color: #64748b; font-weight: 500; border-top: 1px solid #e2e8f0;">Business Name</td>
                     <td style="padding: 12px 0; color: #0f172a; font-weight: 600; text-align: right; border-top: 1px solid #e2e8f0;">${business_name || "Not provided"}</td>
                   </tr>
-                 
+                  <tr>
+                    <td colspan="2" style="padding: 12px 0; border-top: 1px solid #e2e8f0;">
+                      <div style="color: #64748b; font-weight: 500; margin-bottom: 8px;">Message</div>
+                      <div style="color: #0f172a; font-weight: 500; line-height: 1.6; white-space: pre-wrap; word-break: break-word;">${client_message || "None"}</div>
+                    </td>
+                  </tr>
                   <tr>
                     <td style="padding: 12px 0; color: #64748b; font-weight: 500; border-top: 1px solid #e2e8f0;">Booking ID</td>
                     <td style="padding: 12px 0; color: #0f172a; font-weight: 700; text-align: right; border-top: 1px solid #e2e8f0; font-family: monospace; font-size: 15px;">${reservationCode}</td>
                   </tr>
                 </table>
-                 
               </div>
-<div
-                  style="
-                    padding: 6px 20px;
-                    display: flex;
-                    flex-direction: column;
-                    width: 100%;
-                    justify-content: space-between;
-                  "
-                >
-                  <div
-                    style="
-                      padding: 12px 0;
-                      color: #64748b;
-                      font-weight: 500;
-                      border-top: 1px solid #e2e8f0;
-                    "
-                  >
-                    Message
-                  </div>
-                  <div
-                    style="
-                      padding: 4px 4px;
-                      color: #0f172a;
-                      font-weight: 500;
-                      text-align: left;
-                      line-height: 1.5;
-                    "
-                  >
-                    ${client_message || "None"}
-                  </div>
-                </div>
-              <div style="margin-top: 24px; padding: 16px 20px; background-color: #fde8e8; border-radius: 12px; border-left: 4px solid #e90000;">
-                <p style="margin: 0; font-size: 14px; color: #2d0202; font-weight: 500; line-height: 1.6;">
-                  <strong style="color: #e90000; font-weight: 800;">Meeting Link:</strong> Will be shared directly by our team via email shortly before the consultation.
+
+              <div style="margin-top: 24px; padding: 16px 20px; background-color: #FEF2F2; border-radius: 12px; border-left: 4px solid #DC2626;">
+                <p style="margin: 0; font-size: 14px; color: #7F1D1D; font-weight: 500; line-height: 1.6;">
+                  <strong style="color: #DC2626; font-weight: 800;">Meeting Link:</strong> Will be shared directly by our team via email shortly before the consultation.
                 </p>
               </div>
 
@@ -230,7 +203,7 @@ const submitConsultationForm = async (req, res) => {
           <tr>
             <td style="background-color: #f8fafc; padding: 32px 24px; text-align: center; border-top: 1px solid #e2e8f0;">
               <p style="margin: 0 0 6px 0; font-size: 13px; color: #94a3b8; font-weight: 500;">
-                Powered by <strong style="color: #e90000; font-weight: 800;">Yoreflow Bookings</strong>
+                Powered by <strong style="color: #DC2626; font-weight: 800;">Yoreflow Bookings</strong>
               </p>
               <p style="margin: 0; font-size: 11px; color: #cbd5e1; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600;">
                 Automated System Notification
@@ -371,7 +344,6 @@ const submitConsultationAfterPayment = async (req, res) => {
       consultation_date,
       eventDesc,
     );
-
     const htmlTemplate = `
 <!DOCTYPE html>
 <html>
@@ -386,7 +358,7 @@ const submitConsultationAfterPayment = async (req, res) => {
         <table width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width: 600px; background-color: #ffffff; border-radius: 24px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); overflow: hidden;">
           
           <tr>
-            <td style="background-color: #ff0000; height: 6px; width: 100%;"></td>
+            <td style="background-color: #DC2626; height: 6px; width: 100%;"></td>
           </tr>
           
           <tr>
@@ -394,7 +366,7 @@ const submitConsultationAfterPayment = async (req, res) => {
               
               <div style="text-align: center; margin-bottom: 32px;">
                 <div style="font-size: 20px; font-weight: 800; color: #0f172a; letter-spacing: -0.02em;">STACKGATE INTERNATIONAL</div>
-                <div style="font-size: 11px; color: #ff0000; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 6px;">Consultation Confirmation</div>
+                <div style="font-size: 11px; color: #DC2626; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 6px;">Consultation Confirmation</div>
               </div>
 
               <div style="text-align: center; margin-bottom: 24px;">
@@ -409,15 +381,14 @@ const submitConsultationAfterPayment = async (req, res) => {
                       <td
                         align="center"
                         valign="middle"
-                        style="
+                       style="
                           width: 64px;
                           height: 64px;
-                          background-color: #f0fdf4;
                           border-radius: 50%;
-                          border: 6px solid #d8ffe4;
+                          border: 6px solid #8c8c8c;
                         "
                       >
-                       <img src='https://res.cloudinary.com/dd5ppwbyi/image/upload/v1777029169/stact-gate_red_przu6u.png' alt='Yoreflow' style="height: 35px; width: auto; margin-bottom: 12px;">
+                        <img src='https://res.cloudinary.com/dd5ppwbyi/image/upload/v1777029169/stact-gate_red_przu6u.png' alt='Yoreflow' style="height: 35px; width: auto; margin-bottom: 12px;">
                       </td>
                     </tr>
                   </table>
@@ -430,7 +401,7 @@ const submitConsultationAfterPayment = async (req, res) => {
 
               <div style="text-align: center; margin-bottom: 40px;">
                 <div style="font-size: 40px; font-weight: 800; color: #0f172a; letter-spacing: -0.04em; margin-bottom: 8px;">${time}</div>
-                <div style="font-size: 16px; font-weight: 600; color: #ff0000;">${date}</div>
+                <div style="font-size: 16px; font-weight: 600; color: #DC2626;">${date}</div>
                 
                 <div style="margin-top: 24px; padding-top: 24px; border-top: 1px dashed #e2e8f0;">
                   <p style="margin: 0 0 16px 0; font-size: 13px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em;">
@@ -470,48 +441,22 @@ const submitConsultationAfterPayment = async (req, res) => {
                     <td style="padding: 12px 0; color: #64748b; font-weight: 500; border-top: 1px solid #e2e8f0;">Business Name</td>
                     <td style="padding: 12px 0; color: #0f172a; font-weight: 600; text-align: right; border-top: 1px solid #e2e8f0;">${business_name || "Not provided"}</td>
                   </tr>
-                 
+                  <tr>
+                    <td colspan="2" style="padding: 12px 0; border-top: 1px solid #e2e8f0;">
+                      <div style="color: #64748b; font-weight: 500; margin-bottom: 8px;">Message</div>
+                      <div style="color: #0f172a; font-weight: 500; line-height: 1.6; white-space: pre-wrap; word-break: break-word;">${client_message || "None"}</div>
+                    </td>
+                  </tr>
                   <tr>
                     <td style="padding: 12px 0; color: #64748b; font-weight: 500; border-top: 1px solid #e2e8f0;">Booking ID</td>
-                    <td style="padding: 12px 0; color: #0f172a; font-weight: 700; text-align: right; border-top: 1px solid #e2e8f0; font-family: monospace; font-size: 15px;">${finalReservationCode}</td>
+                    <td style="padding: 12px 0; color: #0f172a; font-weight: 700; text-align: right; border-top: 1px solid #e2e8f0; font-family: monospace; font-size: 15px;">${reservationCode}</td>
                   </tr>
                 </table>
-                 
               </div>
-<div
-                  style="
-                    padding: 6px 20px;
-                    display: flex;
-                    flex-direction: column;
-                    width: 100%;
-                    justify-content: space-between;
-                  "
-                >
-                  <div
-                    style="
-                      padding: 12px 0;
-                      color: #64748b;
-                      font-weight: 500;
-                      border-top: 1px solid #e2e8f0;
-                    "
-                  >
-                    Message
-                  </div>
-                  <div
-                    style="
-                      padding: 4px 4px;
-                      color: #0f172a;
-                      font-weight: 500;
-                      text-align: left;
-                      line-height: 1.5;
-                    "
-                  >
-                    ${client_message || "None"}
-                  </div>
-                </div>
-              <div style="margin-top: 24px; padding: 16px 20px; background-color: #fef3f3; border-radius: 12px; border-left: 4px solid #ff0000;">
-                <p style="margin: 0; font-size: 14px; color: #2d0202; font-weight: 500; line-height: 1.6;">
-                  <strong style="color: #ff0000; font-weight: 800;">Meeting Link:</strong> Will be shared directly by our team via email shortly before the consultation.
+
+              <div style="margin-top: 24px; padding: 16px 20px; background-color: #FEF2F2; border-radius: 12px; border-left: 4px solid #DC2626;">
+                <p style="margin: 0; font-size: 14px; color: #7F1D1D; font-weight: 500; line-height: 1.6;">
+                  <strong style="color: #DC2626; font-weight: 800;">Meeting Link:</strong> Will be shared directly by our team via email shortly before the consultation.
                 </p>
               </div>
 
@@ -521,7 +466,7 @@ const submitConsultationAfterPayment = async (req, res) => {
           <tr>
             <td style="background-color: #f8fafc; padding: 32px 24px; text-align: center; border-top: 1px solid #e2e8f0;">
               <p style="margin: 0 0 6px 0; font-size: 13px; color: #94a3b8; font-weight: 500;">
-                Powered by <strong style="color: #ff0000; font-weight: 800;">Yoreflow Bookings</strong>
+                Powered by <strong style="color: #DC2626; font-weight: 800;">Yoreflow Bookings</strong>
               </p>
               <p style="margin: 0; font-size: 11px; color: #cbd5e1; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600;">
                 Automated System Notification
@@ -536,7 +481,6 @@ const submitConsultationAfterPayment = async (req, res) => {
 </body>
 </html>
 `;
-
     const textContent = `
 STACKGATE INTERNATIONAL - Booking Successful
 
