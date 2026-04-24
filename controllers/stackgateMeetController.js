@@ -87,7 +87,7 @@ const submitConsultationForm = async (req, res) => {
 <head>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
-<body style="margin: 0; padding: 0; background-color: #f4f7f6; font-family: 'Bricolage Grotesque', Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased;">
+<body style="margin: 0; padding: 0; background-color: #f4f7f6; font-family: 'Bricolage Grotesque', sans-serif !important; -webkit-font-smoothing: antialiased;">
   
   <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #f4f7f6; padding: 40px 20px;">
     <tr>
@@ -349,7 +349,7 @@ const submitConsultationAfterPayment = async (req, res) => {
 <head>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
-<body style="margin: 0; padding: 0; background-color: #f4f7f6; font-family: 'Bricolage Grotesque', Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased;">
+<body style="margin: 0; padding: 0; background-color: #f4f7f6; font-family: 'Bricolage Grotesque', sans-serif !important; -webkit-font-smoothing: antialiased;">
   
   <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #f4f7f6; padding: 40px 20px;">
     <tr>
