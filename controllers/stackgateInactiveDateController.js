@@ -43,7 +43,6 @@ const createOrUpdateInactiveDate = async (req, res) => {
       data: inactiveDate
     });
   } catch (error) {
-    console.error('StackGate create/update inactive date error:', error);
     res.status(500).json({ success: false, error: 'Server error' });
   }
 };
@@ -81,7 +80,6 @@ const getAllInactiveDates = async (req, res) => {
       data: inactiveDates
     });
   } catch (error) {
-    console.error('StackGate get inactive dates error:', error);
     res.status(500).json({ success: false, error: 'Server error' });
   }
 };
@@ -107,7 +105,6 @@ const getInactiveDateByDate = async (req, res) => {
       data: inactiveDate
     });
   } catch (error) {
-    console.error('StackGate get inactive date error:', error);
     res.status(500).json({ success: false, error: 'Server error' });
   }
 };
@@ -130,7 +127,6 @@ const deleteInactiveDate = async (req, res) => {
       message: 'StackGate inactive date deleted successfully'
     });
   } catch (error) {
-    console.error('StackGate delete inactive date error:', error);
     res.status(500).json({ success: false, error: 'Server error' });
   }
 };
@@ -167,7 +163,6 @@ const updateInactiveDate = async (req, res) => {
       data: inactiveDate
     });
   } catch (error) {
-    console.error('StackGate update inactive date error:', error);
     res.status(500).json({ success: false, error: 'Server error' });
   }
 };
@@ -224,7 +219,85 @@ const checkDateAvailability = async (req, res) => {
       blockedTimeSlots: inactiveDate.timeSlots
     });
   } catch (error) {
-    console.error('StackGate check availability error:', error);
+    res.status(500).json({ success: false, error: 'Server error' });
+  }
+};
+
+const bookSlotPublicPost = async (req, res) => {
+  try {
+    const { date, isFullDay, timeSlots, reason } = req.body;
+
+    if (!date) {
+      return res.status(400).json({ success: false, error: 'Date is required' });
+    }
+
+    const dateString = date.includes('T') ? date.split('T')[0] : date;
+    const targetDate = new Date(`${dateString}T00:00:00.000Z`);
+
+    const existingRecord = await StackGateInactiveDate.findOne({ date: targetDate });
+
+    if (existingRecord) {
+      existingRecord.isFullDay = isFullDay;
+      existingRecord.timeSlots = timeSlots || [];
+      existingRecord.reason = reason || '';
+      existingRecord.updatedAt = Date.now();
+      await existingRecord.save();
+      
+      return res.json({
+        success: true,
+        data: existingRecord
+      });
+    }
+
+    const inactiveDate = new StackGateInactiveDate({
+      date: targetDate,
+      isFullDay,
+      timeSlots: timeSlots || [],
+      reason: reason || ''
+    });
+
+    await inactiveDate.save();
+
+    res.status(201).json({
+      success: true,
+      data: inactiveDate
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, error: 'Server error' });
+  }
+};
+
+const bookSlotPublicPut = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { date, isFullDay, timeSlots, reason } = req.body;
+
+    const inactiveDate = await StackGateInactiveDate.findById(id);
+
+    if (!inactiveDate) {
+      return res.status(404).json({ 
+        success: false, 
+        error: 'Inactive date not found' 
+      });
+    }
+
+    if (date) {
+      const dateString = date.includes('T') ? date.split('T')[0] : date;
+      inactiveDate.date = new Date(`${dateString}T00:00:00.000Z`);
+    }
+    
+    if (isFullDay !== undefined) inactiveDate.isFullDay = isFullDay;
+    if (timeSlots !== undefined) inactiveDate.timeSlots = timeSlots;
+    if (reason !== undefined) inactiveDate.reason = reason;
+    
+    inactiveDate.updatedAt = Date.now();
+    await inactiveDate.save();
+
+    res.json({
+      success: true,
+      data: inactiveDate
+    });
+  } catch (error) {
     res.status(500).json({ success: false, error: 'Server error' });
   }
 };
@@ -235,5 +308,7 @@ module.exports = {
   getInactiveDateByDate,
   deleteInactiveDate,
   updateInactiveDate,
-  checkDateAvailability
+  checkDateAvailability,
+  bookSlotPublicPost,
+  bookSlotPublicPut
 };
