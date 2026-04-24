@@ -447,10 +447,10 @@ const submitConsultationAfterPayment = async (req, res) => {
                       <div style="color: #0f172a; font-weight: 500; line-height: 1.6; white-space: pre-wrap; word-break: break-word;">${client_message || "None"}</div>
                     </td>
                   </tr>
-                  <tr>
-                    <td style="padding: 12px 0; color: #64748b; font-weight: 500; border-top: 1px solid #e2e8f0;">Booking ID</td>
-                    <td style="padding: 12px 0; color: #0f172a; font-weight: 700; text-align: right; border-top: 1px solid #e2e8f0; font-family: monospace; font-size: 15px;">${reservationCode}</td>
-                  </tr>
+            <tr>
+  <td style="padding: 12px 0; color: #64748b; font-weight: 500; border-top: 1px solid #e2e8f0;">Booking ID</td>
+  <td style="padding: 12px 0; color: #0f172a; font-weight: 700; text-align: right; border-top: 1px solid #e2e8f0; font-family: monospace; font-size: 15px;">${finalReservationCode}</td>
+</tr>
                 </table>
               </div>
 
