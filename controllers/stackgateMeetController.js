@@ -9,13 +9,13 @@ const formatDateTime = (dateTime) => {
     year: "numeric",
     month: "long",
     day: "numeric",
-    timeZone: "Africa/Lagos"
+    timeZone: "Africa/Lagos",
   };
   const timeOptions = {
     hour: "2-digit",
     minute: "2-digit",
     hour12: true,
-    timeZone: "Africa/Lagos"
+    timeZone: "Africa/Lagos",
   };
 
   return {
@@ -205,18 +205,38 @@ const submitConsultationForm = async (req, res) => {
                     <td style="padding: 12px 0; color: #64748b; font-weight: 500; border-top: 1px solid #e2e8f0;">Business Name</td>
                     <td style="padding: 12px 0; color: #0f172a; font-weight: 600; text-align: right; border-top: 1px solid #e2e8f0;">${business_name || "Not provided"}</td>
                   </tr>
-                  <tr style="display: flex; flex-direction: column;">
-                    <td style="padding: 12px 0; color: #64748b; font-weight: 500; border-top: 1px solid #e2e8f0;">Message</td>
-                    <td style="padding: 4px 4px; color: #0f172a; font-weight: 500; text-align: right;  line-height: 1.5;">${client_message || "None"}</td>
-                  </tr>
+                 
                   <tr>
                     <td style="padding: 12px 0; color: #64748b; font-weight: 500; border-top: 1px solid #e2e8f0;">Booking ID</td>
                     <td style="padding: 12px 0; color: #0f172a; font-weight: 700; text-align: right; border-top: 1px solid #e2e8f0; font-family: monospace; font-size: 15px;">${reservationCode}</td>
                   </tr>
                 </table>
+                 <div style="display: flex; flex-direction: column; width: 100%; justify-content: space-between;">
+                      <div
+                        style="
+                          padding: 12px 0;
+                          color: #64748b;
+                          font-weight: 500;
+                          border-top: 1px solid #e2e8f0;
+                        "
+                      >
+                        Message
+                      </div>
+                      <div
+                        style="
+                          padding: 4px 4px;
+                          color: #0f172a;
+                          font-weight: 500;
+                          text-align: left;
+                          line-height: 1.5;
+                        "
+                      >
+                        ${client_message || "None"} 
+                      </div>
+                    </div>
               </div>
 
-              <div style="margin-top: 24px; padding: 16px 20px; background-color: #ffd6d6; border-radius: 12px; border-left: 4px solid #e90000;">
+              <div style="margin-top: 24px; padding: 16px 20px; background-color: #fde8e8; border-radius: 12px; border-left: 4px solid #e90000;">
                 <p style="margin: 0; font-size: 14px; color: #8a1e1e; font-weight: 500; line-height: 1.6;">
                   <strong style="color: #e90000; font-weight: 800;">Meeting Link:</strong> Will be shared directly by our team via email shortly before the consultation.
                 </p>
@@ -306,7 +326,11 @@ Automated System Notification
     const fs = require("fs").promises;
     const path = require("path");
 
-    const submissionsDir = path.join(__dirname, "..", "stackgate_consultations");
+    const submissionsDir = path.join(
+      __dirname,
+      "..",
+      "stackgate_consultations",
+    );
     await fs.mkdir(submissionsDir, { recursive: true });
 
     const filename = `stackgate_consultation_${Date.now()}.json`;
@@ -490,18 +514,38 @@ const submitConsultationAfterPayment = async (req, res) => {
                     <td style="padding: 12px 0; color: #64748b; font-weight: 500; border-top: 1px solid #e2e8f0;">Business Name</td>
                     <td style="padding: 12px 0; color: #0f172a; font-weight: 600; text-align: right; border-top: 1px solid #e2e8f0;">${business_name || "Not provided"}</td>
                   </tr>
-                  <tr style="display: flex; flex-direction: column;">
-                    <td style="padding: 12px 0; color: #64748b; font-weight: 500; border-top: 1px solid #e2e8f0;">Message</td>
-                    <td style="padding: 4px 4px; color: #0f172a; font-weight: 500; text-align: right;  line-height: 1.5;">${client_message || "None"}</td>
-                  </tr>
+                 
                   <tr>
                     <td style="padding: 12px 0; color: #64748b; font-weight: 500; border-top: 1px solid #e2e8f0;">Booking ID</td>
                     <td style="padding: 12px 0; color: #0f172a; font-weight: 700; text-align: right; border-top: 1px solid #e2e8f0; font-family: monospace; font-size: 15px;">${finalReservationCode}</td>
                   </tr>
                 </table>
+                 <div style="display: flex; flex-direction: column; width: 100%; justify-content: space-between;">
+                      <div
+                        style="
+                          padding: 12px 0;
+                          color: #64748b;
+                          font-weight: 500;
+                          border-top: 1px solid #e2e8f0;
+                        "
+                      >
+                        Message
+                      </div>
+                      <div
+                        style="
+                          padding: 4px 4px;
+                          color: #0f172a;
+                          font-weight: 500;
+                          text-align: left;
+                          line-height: 1.5;
+                        "
+                      >
+                        ${client_message || "None"} 
+                      </div>
+                    </div>
               </div>
 
-              <div style="margin-top: 24px; padding: 16px 20px; background-color: #ffe6e6; border-radius: 12px; border-left: 4px solid #ff0000;">
+              <div style="margin-top: 24px; padding: 16px 20px; background-color: #fef3f3; border-radius: 12px; border-left: 4px solid #ff0000;">
                 <p style="margin: 0; font-size: 14px; color: #8a1e1e; font-weight: 500; line-height: 1.6;">
                   <strong style="color: #ff0000; font-weight: 800;">Meeting Link:</strong> Will be shared directly by our team via email shortly before the consultation.
                 </p>
@@ -591,7 +635,11 @@ Automated System Notification
     const fs = require("fs").promises;
     const path = require("path");
 
-    const submissionsDir = path.join(__dirname, "..", "stackgate_consultations");
+    const submissionsDir = path.join(
+      __dirname,
+      "..",
+      "stackgate_consultations",
+    );
     await fs.mkdir(submissionsDir, { recursive: true });
 
     const filename = `stackgate_post_payment_consultation_${Date.now()}.json`;
