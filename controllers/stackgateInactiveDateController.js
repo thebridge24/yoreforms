@@ -1,4 +1,5 @@
 const StackGateInactiveDate = require('../models/StackGateInactiveDate');
+const StackGateAdmin = require('../models/StackGateAdmin');
 
 const createOrUpdateInactiveDate = async (req, res) => {
   try {
@@ -43,6 +44,7 @@ const createOrUpdateInactiveDate = async (req, res) => {
       data: inactiveDate
     });
   } catch (error) {
+    console.error(error);
     res.status(500).json({ success: false, error: 'Server error' });
   }
 };
@@ -80,6 +82,7 @@ const getAllInactiveDates = async (req, res) => {
       data: inactiveDates
     });
   } catch (error) {
+    console.error(error);
     res.status(500).json({ success: false, error: 'Server error' });
   }
 };
@@ -105,6 +108,7 @@ const getInactiveDateByDate = async (req, res) => {
       data: inactiveDate
     });
   } catch (error) {
+    console.error(error);
     res.status(500).json({ success: false, error: 'Server error' });
   }
 };
@@ -127,6 +131,7 @@ const deleteInactiveDate = async (req, res) => {
       message: 'StackGate inactive date deleted successfully'
     });
   } catch (error) {
+    console.error(error);
     res.status(500).json({ success: false, error: 'Server error' });
   }
 };
@@ -163,6 +168,7 @@ const updateInactiveDate = async (req, res) => {
       data: inactiveDate
     });
   } catch (error) {
+    console.error(error);
     res.status(500).json({ success: false, error: 'Server error' });
   }
 };
@@ -219,6 +225,7 @@ const checkDateAvailability = async (req, res) => {
       blockedTimeSlots: inactiveDate.timeSlots
     });
   } catch (error) {
+    console.error(error);
     res.status(500).json({ success: false, error: 'Server error' });
   }
 };
@@ -249,11 +256,14 @@ const bookSlotPublicPost = async (req, res) => {
       });
     }
 
+    const admin = await StackGateAdmin.findOne();
+
     const inactiveDate = new StackGateInactiveDate({
       date: targetDate,
       isFullDay,
       timeSlots: timeSlots || [],
-      reason: reason || ''
+      reason: reason || '',
+      createdBy: admin ? admin._id : undefined
     });
 
     await inactiveDate.save();
@@ -263,6 +273,7 @@ const bookSlotPublicPost = async (req, res) => {
       data: inactiveDate
     });
   } catch (error) {
+    console.error("Public Post Error:", error);
     res.status(500).json({ success: false, error: 'Server error' });
   }
 };
@@ -298,6 +309,7 @@ const bookSlotPublicPut = async (req, res) => {
       data: inactiveDate
     });
   } catch (error) {
+    console.error(error);
     res.status(500).json({ success: false, error: 'Server error' });
   }
 };
