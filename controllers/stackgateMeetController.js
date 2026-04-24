@@ -121,8 +121,7 @@ const submitConsultationForm = async (req, res) => {
                         style="
                           width: 64px;
                           height: 64px;
-                          border-radius: 50%;
-                          border: 6px solid #8c8c8c;
+                    
                         "
                       >
                          <img src='https://res.cloudinary.com/dd5ppwbyi/image/upload/v1777029169/stact-gate_red_przu6u.png' alt='Yoreflow' style="height: 35px; width: auto; margin-bottom: 12px;">
@@ -384,8 +383,7 @@ const submitConsultationAfterPayment = async (req, res) => {
                        style="
                           width: 64px;
                           height: 64px;
-                          border-radius: 50%;
-                          border: 6px solid #8c8c8c;
+                    
                         "
                       >
                         <img src='https://res.cloudinary.com/dd5ppwbyi/image/upload/v1777029169/stact-gate_red_przu6u.png' alt='Yoreflow' style="height: 35px; width: auto; margin-bottom: 12px;">
