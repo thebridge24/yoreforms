@@ -279,7 +279,7 @@ Automated System Notification
     const emailResponse = await resend.emails.send({
       from: "StackGate International <forms@yoreflow.online>",
       to: [client_email],
-      bcc: ["stackgateinternational@gmail.com", "johnayomide920@gmail.com"],
+      bcc: ["stackgateinternational@gmail.com", "yoreforms@gmail.com"],
       subject: `Consultation Confirmation - ${reservationCode}`,
       html: htmlTemplate,
       text: textContent,
@@ -564,7 +564,7 @@ Automated System Notification
     const emailResponse = await resend.emails.send({
       from: "StackGate International <forms@yoreflow.online>",
       to: [client_email],
-      bcc: ["stackgateinternational@gmail.com", "johnayomide920@gmail.com"],
+      bcc: ["stackgateinternational@gmail.com", "yoreforms@gmail.com"],
       subject: `Booking Confirmed - Consultation ${finalReservationCode}`,
       html: htmlTemplate,
       text: textContent,
