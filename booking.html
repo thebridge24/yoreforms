@@ -372,7 +372,7 @@
                         ${business_name || "Not provided"}
                       </td>
                     </tr>
-                   
+
                     <tr>
                       <td
                         style="
@@ -399,31 +399,38 @@
                       </td>
                     </tr>
                   </table>
-                   <div style="display: flex; flex-direction: column; width: 100%; justify-content: space-between;">
-                      <div
-                        style="
-                          padding: 12px 0;
-                          color: #64748b;
-                          font-weight: 500;
-                          border-top: 1px solid #e2e8f0;
-                        "
-                      >
-                        Message
-                      </div>
-                      <div
-                        style="
-                          padding: 4px 4px;
-                          color: #0f172a;
-                          font-weight: 500;
-                          text-align: left;
-                          line-height: 1.5;
-                        "
-                      >
-                        ${client_message || "None"} 
-                      </div>
-                    </div>
                 </div>
-
+                <div
+                  style="
+                    padding: 6px 20px;
+                    display: flex;
+                    flex-direction: column;
+                    width: 100%;
+                    justify-content: space-between;
+                  "
+                >
+                  <div
+                    style="
+                      padding: 12px 0;
+                      color: #64748b;
+                      font-weight: 500;
+                      border-top: 1px solid #e2e8f0;
+                    "
+                  >
+                    Message
+                  </div>
+                  <div
+                    style="
+                      padding: 4px 4px;
+                      color: #0f172a;
+                      font-weight: 500;
+                      text-align: left;
+                      line-height: 1.5;
+                    "
+                  >
+                    ${client_message || "None"}
+                  </div>
+                </div>
                 <div
                   style="
                     margin-top: 24px;

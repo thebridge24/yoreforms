@@ -126,33 +126,7 @@ const submitConsultationForm = async (req, res) => {
                           border: 6px solid #d8ffe4;
                         "
                       >
-                        <span style="color: #16a34a; font-weight: 800">
-                          <svg
-                            width="32"
-                            height="32"
-                            viewBox="0 0 36 36"
-                            xmlns="http://www.w3.org/2000/svg"
-                            xmlns:xlink="http://www.w3.org/1999/xlink"
-                            aria-hidden="true"
-                            role="img"
-                            class="iconify iconify--twemoji"
-                            preserveAspectRatio="xMidYMid meet"
-                            fill="#16a34a"
-                          >
-                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                            <g
-                              id="SVGRepo_tracerCarrier"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                            ></g>
-                            <g id="SVGRepo_iconCarrier">
-                              <path
-                                fill="#16a34a"
-                                d="M34.459 1.375a2.999 2.999 0 0 0-4.149.884L13.5 28.17l-8.198-7.58a2.999 2.999 0 1 0-4.073 4.405l10.764 9.952s.309.266.452.359a2.999 2.999 0 0 0 4.15-.884L35.343 5.524a2.999 2.999 0 0 0-.884-4.149z"
-                              ></path>
-                            </g>
-                          </svg>
-                        </span>
+                          <img src='https://res.cloudinary.com/dd5ppwbyi/image/upload/v1777029169/stact-gate_red_przu6u.png' alt='Yoreflow' style="height: 35px; width: auto; margin-bottom: 12px;">
                       </td>
                     </tr>
                   </table>
@@ -211,33 +185,41 @@ const submitConsultationForm = async (req, res) => {
                     <td style="padding: 12px 0; color: #0f172a; font-weight: 700; text-align: right; border-top: 1px solid #e2e8f0; font-family: monospace; font-size: 15px;">${reservationCode}</td>
                   </tr>
                 </table>
-                 <div style="display: flex; flex-direction: column; width: 100%; justify-content: space-between;">
-                      <div
-                        style="
-                          padding: 12px 0;
-                          color: #64748b;
-                          font-weight: 500;
-                          border-top: 1px solid #e2e8f0;
-                        "
-                      >
-                        Message
-                      </div>
-                      <div
-                        style="
-                          padding: 4px 4px;
-                          color: #0f172a;
-                          font-weight: 500;
-                          text-align: left;
-                          line-height: 1.5;
-                        "
-                      >
-                        ${client_message || "None"} 
-                      </div>
-                    </div>
+                 
               </div>
-
+<div
+                  style="
+                    padding: 6px 20px;
+                    display: flex;
+                    flex-direction: column;
+                    width: 100%;
+                    justify-content: space-between;
+                  "
+                >
+                  <div
+                    style="
+                      padding: 12px 0;
+                      color: #64748b;
+                      font-weight: 500;
+                      border-top: 1px solid #e2e8f0;
+                    "
+                  >
+                    Message
+                  </div>
+                  <div
+                    style="
+                      padding: 4px 4px;
+                      color: #0f172a;
+                      font-weight: 500;
+                      text-align: left;
+                      line-height: 1.5;
+                    "
+                  >
+                    ${client_message || "None"}
+                  </div>
+                </div>
               <div style="margin-top: 24px; padding: 16px 20px; background-color: #fde8e8; border-radius: 12px; border-left: 4px solid #e90000;">
-                <p style="margin: 0; font-size: 14px; color: #8a1e1e; font-weight: 500; line-height: 1.6;">
+                <p style="margin: 0; font-size: 14px; color: #2d0202; font-weight: 500; line-height: 1.6;">
                   <strong style="color: #e90000; font-weight: 800;">Meeting Link:</strong> Will be shared directly by our team via email shortly before the consultation.
                 </p>
               </div>
@@ -435,33 +417,7 @@ const submitConsultationAfterPayment = async (req, res) => {
                           border: 6px solid #d8ffe4;
                         "
                       >
-                        <span style="color: #16a34a; font-weight: 800">
-                          <svg
-                            width="32"
-                            height="32"
-                            viewBox="0 0 36 36"
-                            xmlns="http://www.w3.org/2000/svg"
-                            xmlns:xlink="http://www.w3.org/1999/xlink"
-                            aria-hidden="true"
-                            role="img"
-                            class="iconify iconify--twemoji"
-                            preserveAspectRatio="xMidYMid meet"
-                            fill="#16a34a"
-                          >
-                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                            <g
-                              id="SVGRepo_tracerCarrier"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                            ></g>
-                            <g id="SVGRepo_iconCarrier">
-                              <path
-                                fill="#16a34a"
-                                d="M34.459 1.375a2.999 2.999 0 0 0-4.149.884L13.5 28.17l-8.198-7.58a2.999 2.999 0 1 0-4.073 4.405l10.764 9.952s.309.266.452.359a2.999 2.999 0 0 0 4.15-.884L35.343 5.524a2.999 2.999 0 0 0-.884-4.149z"
-                              ></path>
-                            </g>
-                          </svg>
-                        </span>
+                       <img src='https://res.cloudinary.com/dd5ppwbyi/image/upload/v1777029169/stact-gate_red_przu6u.png' alt='Yoreflow' style="height: 35px; width: auto; margin-bottom: 12px;">
                       </td>
                     </tr>
                   </table>
@@ -520,33 +476,41 @@ const submitConsultationAfterPayment = async (req, res) => {
                     <td style="padding: 12px 0; color: #0f172a; font-weight: 700; text-align: right; border-top: 1px solid #e2e8f0; font-family: monospace; font-size: 15px;">${finalReservationCode}</td>
                   </tr>
                 </table>
-                 <div style="display: flex; flex-direction: column; width: 100%; justify-content: space-between;">
-                      <div
-                        style="
-                          padding: 12px 0;
-                          color: #64748b;
-                          font-weight: 500;
-                          border-top: 1px solid #e2e8f0;
-                        "
-                      >
-                        Message
-                      </div>
-                      <div
-                        style="
-                          padding: 4px 4px;
-                          color: #0f172a;
-                          font-weight: 500;
-                          text-align: left;
-                          line-height: 1.5;
-                        "
-                      >
-                        ${client_message || "None"} 
-                      </div>
-                    </div>
+                 
               </div>
-
+<div
+                  style="
+                    padding: 6px 20px;
+                    display: flex;
+                    flex-direction: column;
+                    width: 100%;
+                    justify-content: space-between;
+                  "
+                >
+                  <div
+                    style="
+                      padding: 12px 0;
+                      color: #64748b;
+                      font-weight: 500;
+                      border-top: 1px solid #e2e8f0;
+                    "
+                  >
+                    Message
+                  </div>
+                  <div
+                    style="
+                      padding: 4px 4px;
+                      color: #0f172a;
+                      font-weight: 500;
+                      text-align: left;
+                      line-height: 1.5;
+                    "
+                  >
+                    ${client_message || "None"}
+                  </div>
+                </div>
               <div style="margin-top: 24px; padding: 16px 20px; background-color: #fef3f3; border-radius: 12px; border-left: 4px solid #ff0000;">
-                <p style="margin: 0; font-size: 14px; color: #8a1e1e; font-weight: 500; line-height: 1.6;">
+                <p style="margin: 0; font-size: 14px; color: #2d0202; font-weight: 500; line-height: 1.6;">
                   <strong style="color: #ff0000; font-weight: 800;">Meeting Link:</strong> Will be shared directly by our team via email shortly before the consultation.
                 </p>
               </div>
