@@ -5,9 +5,9 @@ const createPaymentIntent = async (req, res) => {
     console.log('💰 Creating payment intent');
     console.log('Request body:', JSON.stringify(req.body, null, 2));
     
-    const { date, time, userInfo, reservationNumber } = req.body;
+    const { date, time, userInfo, reservationNumber, amount, planTitle, planPrice } = req.body;
     
-    if (!date || !time || !userInfo || !userInfo.email) {
+    if (!userInfo || !userInfo.email) {
       console.log('❌ Missing required fields');
       return res.status(400).json({
         success: false,
@@ -15,27 +15,44 @@ const createPaymentIntent = async (req, res) => {
       });
     }
     
-   const amount = 8500;
+    let paymentAmount = amount || 8500;
+    
+    if (!amount) {
+      if (planTitle && planTitle.includes('Financial Consultation')) {
+        paymentAmount = 25000;
+      } else if (planTitle && planTitle.includes('Credit Catalyst')) {
+        paymentAmount = 55000;
+      } else if (planTitle && planTitle.includes('Ascend')) {
+        paymentAmount = 85000;
+      } else if (planTitle && planTitle.includes('Elite')) {
+        paymentAmount = 105000;
+      } else {
+        paymentAmount = 8500;
+      }
+    }
+    
     const currency = 'usd';
     
     console.log('📝 Creating Stripe payment intent...');
-    console.log(`Amount: $${amount / 100}`);
+    console.log(`Amount: $${paymentAmount / 100}`);
     console.log(`Customer: ${userInfo.email}`);
     
     const paymentIntent = await stripe.paymentIntents.create({
-      amount: amount,
+      amount: paymentAmount,
       currency: currency,
       metadata: {
-        date: date,
-        time: time,
+        date: date || new Date().toISOString(),
+        time: time || 'Immediate Purchase',
         name: userInfo.name,
         email: userInfo.email,
         business_name: userInfo.business_name || 'Individual',
         message: userInfo.message || '',
-        reservationNumber: reservationNumber
+        reservationNumber: reservationNumber,
+        planTitle: planTitle || 'Standard Consultation',
+        planPrice: planPrice || `$${paymentAmount / 100}`
       },
       receipt_email: userInfo.email,
-      description: `Consultation Booking - ${date} ${time}`,
+      description: planTitle ? `${planTitle} Purchase` : `Consultation Booking - ${date} ${time}`,
       automatic_payment_methods: {
         enabled: true,
       },
@@ -43,14 +60,16 @@ const createPaymentIntent = async (req, res) => {
     
     console.log('✅ Payment intent created successfully');
     console.log(`Payment Intent ID: ${paymentIntent.id}`);
-    console.log(`Client Secret: ${paymentIntent.client_secret.substring(0, 20)}...`);
+    console.log(`Amount: $${paymentAmount / 100}`);
     
     const pendingBooking = {
-      date: date,
-      time: time,
+      date: date || new Date().toISOString(),
+      time: time || 'Immediate Purchase',
       userInfo: userInfo,
       reservationNumber: reservationNumber,
       paymentIntentId: paymentIntent.id,
+      amount: paymentAmount,
+      planTitle: planTitle,
       createdAt: new Date().toISOString()
     };
     
@@ -62,7 +81,6 @@ const createPaymentIntent = async (req, res) => {
     global.pendingBookings.set(paymentIntent.id, pendingBooking);
     
     console.log(`✅ Pending booking stored for ${paymentIntent.id}`);
-    console.log(`Total pending bookings: ${global.pendingBookings.size}`);
     
     setTimeout(() => {
       if (global.pendingBookings && global.pendingBookings.has(paymentIntent.id)) {
@@ -75,7 +93,7 @@ const createPaymentIntent = async (req, res) => {
       success: true,
       clientSecret: paymentIntent.client_secret,
       paymentIntentId: paymentIntent.id,
-      amount: amount,
+      amount: paymentAmount,
       currency: currency
     });
     
@@ -109,7 +127,6 @@ const confirmPayment = async (req, res) => {
       
       if (pendingBooking) {
         console.log('📦 Found pending booking data');
-        console.log('Booking details:', pendingBooking);
         
         res.json({
           success: true,
@@ -119,7 +136,9 @@ const confirmPayment = async (req, res) => {
             time: pendingBooking.time,
             userInfo: pendingBooking.userInfo,
             reservationNumber: pendingBooking.reservationNumber,
-            paymentIntentId: paymentIntentId
+            paymentIntentId: paymentIntentId,
+            amount: pendingBooking.amount,
+            planTitle: pendingBooking.planTitle
           }
         });
         
@@ -140,7 +159,9 @@ const confirmPayment = async (req, res) => {
               message: paymentIntent.metadata.message
             },
             reservationNumber: paymentIntent.metadata.reservationNumber,
-            paymentIntentId: paymentIntentId
+            paymentIntentId: paymentIntentId,
+            amount: paymentIntent.amount,
+            planTitle: paymentIntent.metadata.planTitle
           },
           message: 'Payment succeeded, booking data from metadata'
         });
@@ -170,7 +191,6 @@ const confirmPayment = async (req, res) => {
     
   } catch (error) {
     console.error('❌ Error confirming payment:', error.message);
-    console.error('Error stack:', error.stack);
     
     res.status(500).json({
       success: false,
@@ -180,12 +200,12 @@ const confirmPayment = async (req, res) => {
 };
 
 const handleWebhook = async (req, res) => {
-  console.log('🔔 Webhook received (simplified mode)');
+  console.log('🔔 Webhook received');
   console.log('Webhook body:', req.body);
   
   res.json({ 
     received: true,
-    message: 'Webhook received but not processed in simplified mode'
+    message: 'Webhook received'
   });
 };
 

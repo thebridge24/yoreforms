@@ -302,7 +302,7 @@ const bookSlotPublicPut = async (req, res) => {
     if (reason !== undefined) inactiveDate.reason = reason;
     
     inactiveDate.updatedAt = Date.now();
-    await inactiveDate.save();
+    await inactiveDate.save()
 
     res.json({
       success: true,
@@ -324,3 +324,4 @@ module.exports = {
   bookSlotPublicPost,
   bookSlotPublicPut
 };
+
